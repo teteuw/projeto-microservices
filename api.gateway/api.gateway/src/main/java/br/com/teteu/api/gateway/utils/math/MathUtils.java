@@ -1,7 +1,4 @@
 package br.com.teteu.api.gateway.utils.math;
-
-import br.com.teteu.api.gateway.exceptions.UnsupportedMathOperationException;
-
 public class MathUtils {
     public static Double convertToDouble(String str) {
         if(str == null) return 0D;
