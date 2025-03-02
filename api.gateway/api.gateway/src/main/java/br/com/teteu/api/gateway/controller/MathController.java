@@ -5,12 +5,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.teteu.api.gateway.exceptions.UnsupportedMathOperationException;
-import br.com.teteu.api.gateway.utils.math.MathUtils;
-import br.com.teteu.api.gateway.utils.math.SimpleMath;
 
 @RestController
 public class MathController {
-    
+    /* 
     @RequestMapping(value = "/sum/{numberOne}/{numberTwo}", method=RequestMethod.GET)
     public Double sum(
         @PathVariable(value = "numberOne")String numberOne,
@@ -20,34 +18,5 @@ public class MathController {
                     throw new UnsupportedMathOperationException("Please set a valid number");
                 }
             return SimpleMath.sum(numberOne, numberTwo);
-    }
-
-    @RequestMapping(value = "/mul/{numberOne}/{numberTwo}", method = RequestMethod.GET)
-    public Double mul(
-        @PathVariable(value = "numberOne")String numberOne,
-        @PathVariable(value = "numberTwo")String numberTwo) throws Exception{
-            if(!MathUtils.isNumeric(numberOne) || !MathUtils.isNumeric(numberTwo)){
-                throw new UnsupportedMathOperationException("Please set a valid number");
-            }
-            return SimpleMath.mul(numberOne, numberTwo);
-        }
-    @RequestMapping(value = "/div/{numberOne}/{numberTwo}", method = RequestMethod.GET)
-    public Double div(
-        @PathVariable(value = "numberOne") String numberOne,
-        @PathVariable(value = "numberTwo") String numberTwo) throws Exception{
-            if(!MathUtils.isNumeric(numberOne) || !MathUtils.isNumeric(numberTwo)){
-                throw new UnsupportedMathOperationException("Please set a valid number");
-            }
-            return SimpleMath.div(numberOne, numberTwo);
-        }
-    @RequestMapping(value = "/sub/{numberOne}/{numberTwo}", method = RequestMethod.GET)
-    public Double sub(
-        @PathVariable(value = "numberOne") String numberOne,
-        @PathVariable(value = "numberTwo") String numberTwo) throws Exception{
-            if(!MathUtils.isNumeric(numberOne) || !MathUtils.isNumeric(numberTwo)){
-                throw new UnsupportedMathOperationException("Please set a valid number");
-            }
-            return SimpleMath.sub(numberOne, numberTwo);
-        }
-    
+    */
 }
