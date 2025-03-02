@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.teteu.api.gateway.exceptions.UnsupportedMathOperationException;
 import br.com.teteu.api.gateway.utils.math.MathUtils;
+import br.com.teteu.api.gateway.utils.math.SimpleMath;
 
 @RestController
 public class MathController {
@@ -18,7 +19,7 @@ public class MathController {
         if(!MathUtils.isNumeric(numberOne) || !MathUtils.isNumeric(numberTwo)){
                     throw new UnsupportedMathOperationException("Please set a valid number");
                 }
-            return MathUtils.convertToDouble(numberOne) + MathUtils.convertToDouble(numberTwo);
+            return SimpleMath.sum(numberOne, numberTwo);
     }
 
     @RequestMapping(value = "/mul/{numberOne}/{numberTwo}", method = RequestMethod.GET)
@@ -28,7 +29,7 @@ public class MathController {
             if(!MathUtils.isNumeric(numberOne) || !MathUtils.isNumeric(numberTwo)){
                 throw new UnsupportedMathOperationException("Please set a valid number");
             }
-            return MathUtils.convertToDouble(numberOne) * MathUtils.convertToDouble(numberTwo);
+            return SimpleMath.mul(numberOne, numberTwo);
         }
     @RequestMapping(value = "/div/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double div(
@@ -37,7 +38,7 @@ public class MathController {
             if(!MathUtils.isNumeric(numberOne) || !MathUtils.isNumeric(numberTwo)){
                 throw new UnsupportedMathOperationException("Please set a valid number");
             }
-            return MathUtils.convertToDouble(numberOne) / MathUtils.convertToDouble(numberTwo);
+            return SimpleMath.div(numberOne, numberTwo);
         }
     @RequestMapping(value = "/sub/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double sub(
@@ -46,7 +47,7 @@ public class MathController {
             if(!MathUtils.isNumeric(numberOne) || !MathUtils.isNumeric(numberTwo)){
                 throw new UnsupportedMathOperationException("Please set a valid number");
             }
-            return MathUtils.convertToDouble(numberOne) - MathUtils.convertToDouble(numberTwo);
+            return SimpleMath.sub(numberOne, numberTwo);
         }
     
 }
