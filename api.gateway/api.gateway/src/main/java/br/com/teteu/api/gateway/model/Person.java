@@ -2,14 +2,37 @@ package br.com.teteu.api.gateway.model;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity //annotation para mostrar que a classe é uma tabela do banco
+@Table(name = "person") //dizer que esse objeto Person significa esse name representado, por coincidência concidiu de também ser person
+
 public class Person implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //  por padrão já é nullable
     private Long id;
+
+    @Column(name = "first_name", nullable = false, length = 80) //mesma que o table de person
     private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 80)
     private String lastName;
+
+    @Column(nullable = false, length = 100)
     private String adress;
+
+    @Column(nullable = false, length = 6)
     private String gender;
+
+
     public Person(){
         
     }
