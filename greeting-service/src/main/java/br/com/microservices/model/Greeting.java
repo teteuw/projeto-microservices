@@ -1,4 +1,4 @@
-package br.com.microservices.greeting_service;
+package br.com.microservices.model;
 
 public class Greeting {
 	
