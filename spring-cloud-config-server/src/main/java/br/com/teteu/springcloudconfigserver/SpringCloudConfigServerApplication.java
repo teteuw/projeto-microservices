@@ -1,4 +1,4 @@
-package br.com.teteu.spring_cloud_config_server;
+package br.com.teteu.springcloudconfigserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
