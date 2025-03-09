@@ -7,5 +7,11 @@ spring:
   profiles:
     active:
     - native
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/teteuw/microservice-server
+          default-label: main
 
 
