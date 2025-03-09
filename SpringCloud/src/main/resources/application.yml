@@ -13,5 +13,7 @@ spring:
         git:
           uri: https://github.com/teteuw/microservice-server
           default-label: main
+          search-paths:
+          - 'greeting-service*'
 
 
