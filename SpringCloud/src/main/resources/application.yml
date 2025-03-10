@@ -1,0 +1,19 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: SpringCloud
+  profiles:
+    active:
+    - native
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/teteuw/microservice-server
+          default-label: main
+          search-paths:
+          - 'greeting-service*'
+
+

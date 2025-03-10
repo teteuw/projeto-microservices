@@ -8,10 +8,10 @@
 		<version>3.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.teteu</groupId>
-	<artifactId>spring-cloud-config-server</artifactId>
+	<groupId>com.example</groupId>
+	<artifactId>SpringCloud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-cloud-config-server</name>
+	<name>SpringCloud</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -37,7 +37,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
+			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
 
 		<dependency>
