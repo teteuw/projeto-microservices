@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.tteu.book_service.model.Book;
+import br.com.tteu.book_service.repository.BookRepository;
 
 @RestController
 @RequestMapping("book-service")
@@ -17,12 +18,18 @@ public class BookController {
     @Autowired
     Environment environment;
 
+    @Autowired
+    BookRepository repository;
+
     @GetMapping(value = "/{id}/{currency}")
     public Book findBook(
         @PathVariable("id") Long id,
         @PathVariable("currency") String currency){
+
+            var book = repository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
             var port = environment.getProperty("local.server.port");
-            return new Book(1L, "Nigel", "Docker", new Date(), Double.valueOf(14.0), "currency", port);
-    }
+            book.setEnvironment(port);
+            return book;
+        }
     
 }
