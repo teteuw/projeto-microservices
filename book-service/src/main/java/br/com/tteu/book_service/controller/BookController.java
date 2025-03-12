@@ -33,18 +33,20 @@ public class BookController {
             var book = repository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
             var port = environment.getProperty("local.server.port");
 
-            HashMap<String, String> response = new HashMap<>();
-            response.put("amount", book.getPrice().toString());
-            response.put("from", "USD");
-            response.put("to", currency);
+            HashMap<String, String> params = new HashMap<>();
+            params.put("amount", book.getPrice().toString());
+            params.put("from", "USD");
+            params.put("to", currency);
 
-            var cambio = new RestTemplate()
+            var response = new RestTemplate()
             .getForEntity("http://localhost:8000/cambio-service/{amount}/{from}/{to}"
                 , Cambio.class, 
-                    response);
+                    params);
 
+            var cambio = response.getBody();
             
-            book.setEnvironment(port);  
+            book.setEnvironment(port);
+            book.setPrice(cambio.getConversionValue());
 
             return book;
         }
