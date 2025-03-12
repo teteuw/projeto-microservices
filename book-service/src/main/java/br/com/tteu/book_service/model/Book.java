@@ -1,6 +1,9 @@
 package br.com.tteu.book_service.model;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,8 +13,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
+
 @Entity(name = "book")
-public class Book {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Book implements Serializable {
     private static final long seriaVersionUID = 1L;
     
     @Id
