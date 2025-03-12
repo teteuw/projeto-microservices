@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.tteu.book_service.model.Book;
+import br.com.tteu.book_service.proxy.CambioProxy;
 import br.com.tteu.book_service.repository.BookRepository;
 import br.com.tteu.book_service.response.Cambio;
 
@@ -25,7 +26,27 @@ public class BookController {
     @Autowired
     BookRepository repository;
 
+    @Autowired
+    CambioProxy proxy;
+
     @GetMapping(value = "/{id}/{currency}")
+    public Book findBook(
+        @PathVariable("id") Long id,
+        @PathVariable("currency") String currency){
+        
+            var book = repository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+
+            var cambio = proxy.getCambio(book.getPrice(), "USD", currency);
+
+            var port = environment.getProperty("local.server.port");
+            book.setEnvironment(port + " FEIGN");
+            book.setPrice(cambio.getConversionValue());
+
+            return book;
+        }
+
+        /* jeito complicado antes do feign
+        @GetMapping(value = "/{id}/{currency}")
     public Book findBook(
         @PathVariable("id") Long id,
         @PathVariable("currency") String currency){
@@ -50,5 +71,6 @@ public class BookController {
 
             return book;
         }
+            */
     
 }
